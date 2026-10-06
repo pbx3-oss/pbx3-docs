@@ -6,9 +6,9 @@ High-level order (Fleet → **Tenants** → Move / **Jobs** wraps this):
 
 1. Prep destination capacity / trunk mapping (trunks **do not** move).
 2. Export on source → import on destination → **Commit** → test on dest **before** cutover completes.
-3. Cutover (fleet SBC): catalog + `domain.setid` → destination (automated in the job).
+3. Cutover (fleet SBC): catalog domain `setid` **and** DID hop-1 projection → destination (automated in the job).
 4. Cert **Sync** on both nodes as SANs change (LE sync in the job is best-effort; SPA Sync if it skips).
-5. Confirm **DID delivery** still points at the new home (Fleet → DIDs → Project / reconcile if needed) — see [DIDs](dids.md).
+5. **DID hop-1** follows cutover automatically (Gatekeeper projects `fleet=did` rules to the destination dispatcher setid). Confirm with Fleet → DIDs reconcile if you want a second look — see [DIDs](dids.md).
 6. **Drain, then wipe source** — see dual-copy below.
 
 ## Dual-copy until wipe (important)
