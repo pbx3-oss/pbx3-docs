@@ -42,6 +42,18 @@ Edge **Provision access** lockdown (optional UFW on `:41363`) is **edge-global**
 
 See [Desk phone RPS enrollment](../admin/phone-provisioning-rps.md) · [Provision streams](../admin/phone-provisioning-streams.md) · [Restrict provision HTTPS](../admin/phone-provisioning-access.md).
 
+## Desk BLF / PARK after rename or rehome (lab gotcha)
+
+**Not a move-job defect** — usually bad lab housekeeping: a handset BLF that was never re-programmed after the tenant FQDN changed.
+
+Snom (and similar) often expand a short BLF target at **key-program time**. You type `901` for PARK; the phone stores an absolute URI such as `sip:901@{tenant-then}.pbx3.com`. REGISTER / line identity can follow the new home; that BLF URI does **not**.
+
+**Symptom:** phone log shows registration / transport timeout to the SBC VIP; line UI goes unregistered. SBC still has a healthy `REGISTER` for the extension at the **current** tenant FQDN. OpenSIPS logs `SUBSCRIBE` to the **old** FQDN with `Door-knock blocked: domain=… (not found)` and no SIP reply — the handset then promotes the subscription timeout into a fake line failure.
+
+**Lab example (2026-10-06):** Snom PARK still `sip:901@nqybwn.pbx3.com` after Aelintra lived as `hf3zzv`; Call-ID on the “unregistered” event was that SUBSCRIBE, while `3cg94b@hf3zzv` REGISTER kept returning 200.
+
+**Fix:** clear and re-enter the PARK/BLF target on the phone so it re-expands against the current registrar domain (or fix the absolute URI in the provision stream / site fragment if you manage keys that way).
+
 ## CLI (lab / break-glass)
 
 ```bash
