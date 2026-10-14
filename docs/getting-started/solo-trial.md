@@ -9,16 +9,16 @@ Run **one** PBX3 instance without fleet catalog, org S3, Gatekeeper, or SBC.
 | Need | Do not need |
 |------|-------------|
 | Ubuntu 24.04 node with `pbx3` + `pbx3api` | Org S3 bucket / instance catalog |
-| Admin SPA (local or Pages) | Multi-instance picker |
+| Shared admin SPA (**[app.pbx3.com](https://app.pbx3.com)**) | Your own SPA host or Pages deploy |
 | Reachable API at `https://{fqdn}:44300/api` | Control host / Gatekeeper |
 | Sanctum admin login | SBC (optional for internet SIP later) |
 
 ## Sign in
 
-1. Open the admin SPA.
+1. Open **[https://app.pbx3.com](https://app.pbx3.com)** (Lab LAN snakeoil: use [Vite](../installation/install-lab-spa.md) instead).
 2. Enter **email** and **password** (instance admin).
 3. Enter **API base URL**, e.g. `https://YOURNODE.pbx3.com:44300/api`.
-4. Do **not** configure a catalog URL (fleet picker stays unused).
+4. Do **not** point at a fleet catalog (picker unused / solo path).
 
 ## Lab tip
 

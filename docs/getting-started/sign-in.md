@@ -1,5 +1,7 @@
 # Sign in to the admin UI
 
+**Open the SPA at [https://app.pbx3.com](https://app.pbx3.com)** unless you are on the [Lab Vite path](../installation/install-lab-spa.md) (`http://localhost:5173`).
+
 PBX3 uses **one SPA** with two auth planes:
 
 | Mode | Token | Used for |
@@ -13,29 +15,35 @@ Keep those separate (do not mix tokens).
 
 ### Solo
 
-1. Open SPA → login form.
+1. Open **https://app.pbx3.com**.
 2. Email + password + API URL (`https://{node}:44300/api`).
+3. No catalog required.
 
 ### Fleet catalog picker
 
-1. SPA built/configured with catalog URL (`VITE_INSTANCE_DIRECTORY_URL`).
-2. **Refresh catalog** → pick an instance.
-3. Sign in with **that node's** admin credentials.
-4. Top bar shows connected instance label + FQDN.
+1. Open **https://app.pbx3.com** (default catalog is the lab/reference fleet when baked).
+2. Other fleets: **Switch fleet catalog…** (or `?catalog=https://…/catalog/instance-index.json`). That bucket must allow CORS from `https://app.pbx3.com` — [SPA catalog CORS](../cloud/spa-catalog-cors.md).
+3. **Refresh catalog** if needed → pick an instance.
+4. Sign in with **that node's** admin credentials.
+5. Top bar shows connected instance label + FQDN.
 
-### Lab endpoints
+You do **not** build or host a SPA per fleet.
+
+### Lab endpoints (reference)
 
 | Role | URL |
 |------|-----|
+| Shared SPA | `https://app.pbx3.com` |
 | Golden API | `https://08jzwn.pbx3.com:44300/api` |
 | Second node | `https://bzy54n.pbx3.com:44300/api` |
 | Catalog JSON | `https://08jzwn-pbx3.s3.us-east-1.amazonaws.com/catalog/instance-index.json` |
 | Gatekeeper | `https://control.pbx3.com` |
 | SBC admin | `https://sbc.pbx3.com/admin` |
+| Lab Vite (LAN only) | `http://localhost:5173` |
 
 ## Fleet console
 
-1. From SPA Home / login chooser: **Fleet console**, or **Enter Fleet** (dual-hat) after instance login.
+1. From SPA login chooser: **Fleet console**, or **Enter Fleet** (dual-hat) after instance login.
 2. Sign in to Gatekeeper (email/password). Lab user: `fleet@pbx3.com` (password in ops secret store).
 3. Nav stays locked until Sign in succeeds.
 4. **Exit** returns to instance mode; **Logout** ends the fleet session.

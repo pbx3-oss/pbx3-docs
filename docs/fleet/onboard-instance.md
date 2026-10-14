@@ -18,7 +18,7 @@ Do **not** run this on the new EC2. Needs a local **`pbx3`** clone (`pbx3-direct
 
 ```bash
 mkdir -p ~/GiT/pbx3-master && cd ~/GiT/pbx3-master
-git clone https://github.com/aelintra/pbx3.git
+git clone https://github.com/pbx3-oss/pbx3.git
 cd pbx3 && git checkout main && git pull --ff-only
 ```
 
@@ -36,7 +36,7 @@ export PBX3_ORG_BUCKET=08jzwn-pbx3
 
 ## What it covers
 
-IAM policy/role/profile → attach EC2 → SSH `.env` (`PBX3_ORG_BUCKET`, fleet token, backup upload) → seed **Egress** → S3 smoke → register catalog → SPA shows a second row.
+IAM policy/role/profile → attach EC2 → SSH `.env` (`PBX3_ORG_BUCKET`, fleet token, backup upload) → seed **Egress** → S3 smoke → register catalog → shared SPA (**[app.pbx3.com](https://app.pbx3.com)**) shows a second row (bucket CORS must allow that origin).
 
 After onboard: Fleet → **Instances** → **Provision edge** (`sip:{PUBLIC_IP}:5060`) and Fail2ban whitelist — see [Commission Step 2](commission-instance.md#step-2--sbc-edge-required-before-fleet-create-tenant).
 

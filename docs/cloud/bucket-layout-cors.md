@@ -23,8 +23,19 @@ One org bucket for the whole fleet — not one bucket per node.
 3. Upload `catalog/instance-index.json`.
 4. Verify: curl catalog → JSON; `instances/…` anonymous → **403**.
 
-## CORS (SPA + Pages)
+## CORS (shared SPA)
 
-`AllowedOrigins` must include the SPA origin (GitHub Pages and/or `http://localhost:5173` for lab Vite). Methods at least `GET`, `HEAD`.
+`AllowedOrigins` must include the **shared** SPA origin **`https://app.pbx3.com`** (plus `http://localhost:5173` if you use Lab Vite). Methods at least `GET`, `HEAD`. Every fleet org bucket needs this — operators do not host a separate SPA per bucket.
+
+Example:
+
+```json
+[
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "https://app.pbx3.com",
+  "https://pbx3-oss.github.io"
+]
+```
 
 See also [SPA catalog URL and Pages CORS](spa-catalog-cors.md).
