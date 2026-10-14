@@ -26,6 +26,10 @@ The job sits at **`awaiting_cleanup`**. That is intentional:
 - You may leave the job page; reopen via Fleet → **Jobs** → **Open**.
 - Then **Wipe tenant on source** (irreversible cascade + Commit). Do **not** start a second Move for the same wipe.
 
+**In-flight calls + CDR:** dialogs already up at cutover stay on the **source** home until they finish. Those CDRs write only on source (`master.db` is home-local — not in the tenant zip). Dest CDR / charts miss them until a future wipe-time harvest merges by `uniqueid` (**#23d** — design §9.1). Until then: for move-day accounting, check source CDR before wipe.
+
+**Media in the zip:** greetings **and** custom MOH (`moh-{shortuid}/`) always pack with export (tip / after **tenant-move-moh-media**). Instance system `moh/` does not. Recordings stay opt-in. Moves that ran **before** that tip need a manual MOH copy (or SPA re-upload) on dest if Custom MOH was in use.
+
 **Rollback boundary:** anything before wipe is recoverable (flip setid / abort). After wipe, restore = re-import from the staging zip (retained N days).
 
 ## Phone provisioning on move
