@@ -9,3 +9,5 @@ Routes: `/extensions`, `/extensions/new`, `/extensions/:id`
 Until Commit, Asterisk may still serve the previous config.
 
 Phones usually register through the SBC to a **tenant FQDN**, not the raw instance IP — keep Host / SIP domain aligned with the tenant.
+
+Config download (RPS / setting server) is separate from SIP — see [Desk phone RPS enrollment](phone-provisioning-rps.md). The SPA shows the provision URL and **Reset provision state** (Once) on the extension.
