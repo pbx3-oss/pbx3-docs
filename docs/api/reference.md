@@ -435,7 +435,7 @@ Tenant table `appl`. API sets `id` / `shortuid` on create — do not send them.
 
 ## Devices (removed 2026-08-25)
 
-Provisioning templates (`/devices`) and the instance **Device** table were removed — in-house provisioner won't-do. Extension type lives on **`ipphone.device`** (General SIP / WebRTC / MAILBOX / MAC OUI vendor). Existing DBs: `sqlite_device_drop.sql`.
+Provisioning templates (`/devices`) and the instance **Device** table were removed — no per-SKU Device matrix (#28). Home phone provision (Phase A) is a separate listener on **:41363** (`#INCLUDE` vendor streams on `ipphone.provision`) — see pbx3 **`PROVISIONING_SERVER_REQUIREMENTS.md`**. Extension type lives on **`ipphone.device`** (General SIP / WebRTC / MAILBOX). Existing DBs: `sqlite_device_drop.sql`.
 
 ---
 

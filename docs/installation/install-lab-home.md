@@ -31,8 +31,8 @@ Paste this (public **pbx3** + **pbx3api**; run the installer from the pbx3 tree 
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install -y git
 cd ~
-git clone --depth 1 https://github.com/aelintra/pbx3.git
-git clone --depth 1 https://github.com/aelintra/pbx3api.git pbx3/pbx3api
+git clone --depth 1 https://github.com/pbx3-oss/pbx3.git
+git clone --depth 1 https://github.com/pbx3-oss/pbx3api.git pbx3/pbx3api
 cd pbx3
 sudo ./scripts/install-home-host.sh
 ```
@@ -180,5 +180,5 @@ Optional: **recordings → S3** is **off by default** at install. If control ena
 
 ## Next
 
-1. [Install the Lab admin SPA (Vite)](install-lab-spa.md) on your PC (`npm run dev` → http://localhost:5173).
+1. [Admin SPA](install-lab-spa.md) — Lab LAN: Vite on your PC (`npm run dev` → http://localhost:5173). Cloud/public fleets use **https://app.pbx3.com** (no local build).
 2. [Adopt this home into Fleet](install-lab-adopt.md), then **Provision edge**. Ops Mac onboard is **not** the Lab happy path.

@@ -30,7 +30,7 @@ On the SBC VM:
 sudo apt-get update
 sudo apt-get install -y git
 cd ~
-git clone --depth 1 https://github.com/aelintra/pbx3sbc.git
+git clone --depth 1 https://github.com/pbx3-oss/pbx3sbc.git
 cd pbx3sbc
 sudo ./install.sh --advertised-ip 192.168.1.85 --preferlan
 ```
@@ -66,7 +66,7 @@ If `~/pbx3sbc-admin` already exists, skip `git clone` and only `cd ~/pbx3sbc-adm
 
 ```bash
 cd ~
-git clone --depth 1 https://github.com/aelintra/pbx3sbc-admin.git
+git clone --depth 1 https://github.com/pbx3-oss/pbx3sbc-admin.git
 cd ~/pbx3sbc-admin
 sudo ./install.sh \
   --server-name 192.168.1.85 \

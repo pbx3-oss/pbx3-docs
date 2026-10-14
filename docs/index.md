@@ -3,7 +3,7 @@
 Operator and installer guides for **PBX3** — usable as the **lab runbook** while the product hardens (edit freely; treat drafts as living notes).
 
 !!! tip "Lab map"
-    Golden API `https://08jzwn.pbx3.com:44300/api` · Gatekeeper `https://control.pbx3.com` · SBC `https://sbc.pbx3.com/admin` · bucket `08jzwn-pbx3`
+    Admin SPA `https://app.pbx3.com` · Golden API `https://08jzwn.pbx3.com:44300/api` · Gatekeeper `https://control.pbx3.com` · SBC `https://sbc.pbx3.com/admin` · bucket `08jzwn-pbx3`
 
 ## Big picture
 
@@ -25,7 +25,7 @@ flowchart TB
 
     S3[("Org S3 store<br/>catalog · backups · recordings")]
     GK["Gatekeeper<br/>fleet control plane"]
-    SPA["Admin SPA<br/>instance + Fleet mode"]
+    SPA["Admin SPA<br/>app.pbx3.com · instance + Fleet"]
     CAR[["PSTN / Carriers"]]
 
     P1 --> SBC

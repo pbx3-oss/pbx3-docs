@@ -8,7 +8,7 @@ Many interchangeable **instances**. A **tenant** lives on one instance at a time
 | **Instances** | Asterisk + API + tenant data |
 | **Org S3** | Catalog, backups, recordings — not on the call path |
 | **Gatekeeper** | Fleet control plane (`control.pbx3.com` in lab) |
-| **SPA Fleet mode** | Operator UI for catalog / jobs / DIDs |
+| **SPA Fleet mode** | Operator UI for catalog / jobs / DIDs — shared at **[app.pbx3.com](https://app.pbx3.com)** (not per-node / per-builder hosting) |
 
 Calls keep working if Gatekeeper or S3 is down.
 
