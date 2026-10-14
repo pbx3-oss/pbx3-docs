@@ -55,7 +55,7 @@ Worksheet:
 - Any Lab-specific env from the worksheet: {…}
 
 Ask before: wiping an existing Lab DB, changing golden/Lab IPs I did not list.
-Done when: API /up (or Lab equivalent in the doc) is healthy and SPA can sign in to this node.
+Done when: API /up (or Lab equivalent in the doc) is healthy and **https://app.pbx3.com** (or Lab Vite) can sign in to this node.
 ```
 
 ---

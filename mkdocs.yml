@@ -2,8 +2,8 @@ site_name: PBX3 Documentation
 site_description: Installer and administrator guides for PBX3
 site_author: CoCoKraft
 copyright: Copyright &copy; CoCoKraft
-site_url: https://aelintra.github.io/pbx3-docs/
-repo_url: https://github.com/aelintra/pbx3-docs
+site_url: https://pbx3-oss.github.io/pbx3-docs/
+repo_url: https://github.com/pbx3-oss/pbx3-docs
 edit_uri: edit/main/docs/
 
 theme:
@@ -61,7 +61,7 @@ nav:
       - Lab control host: installation/install-lab-control.md
       - Lab SBC (SIP edge): installation/install-lab-sbc.md
       - Lab home PBX: installation/install-lab-home.md
-      - Lab admin SPA (Vite): installation/install-lab-spa.md
+      - Admin SPA (Pages + Lab Vite): installation/install-lab-spa.md
       - Lab adopt home: installation/install-lab-adopt.md
       - First-run installer: installation/first-run.md
       - Upgrade a package: installation/upgrade.md
@@ -75,6 +75,10 @@ nav:
       - Home dashboard: admin/home-dashboard.md
       - Tenants: admin/tenants.md
       - Extensions: admin/extensions.md
+      - Desk phone RPS enrollment: admin/phone-provisioning-rps.md
+      - Reseller full-config (M1): admin/phone-provisioning-m1.md
+      - Provision streams (System + Customer): admin/phone-provisioning-streams.md
+      - Restrict provision HTTPS (edge): admin/phone-provisioning-access.md
       - Trunks and outbound routes: admin/trunks-routes.md
       - Inbound routes (DDI): admin/inbound-routes.md
       - Day timers and route profiles: admin/day-timers-and-profiles.md

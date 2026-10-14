@@ -1,30 +1,39 @@
-# Install the Lab admin SPA (Vite)
+# Admin SPA
 
-**Audience:** a MS or MacOS tech who can create Ubuntu VMs and paste a few commands.  This runs on **your PC**, not on a VM. The home API is already up ([Lab home PBX](install-lab-home.md) `/up` → 200).
+**Audience:** operators and Lab installers. You do **not** need to build or host the SPA yourself for production or cloud fleets.
 
-## What we will install in this section.
+## Product path (shared SPA)
 
-PBX3 Fleet management and admin uses a Single Page App (SPA).  It runs under npm (Node.js) on **your PC**, not on a VM. The Fleet API is already up if you have completed the previous sections in this install sequence.
+Open **[https://app.pbx3.com](https://app.pbx3.com)** — the public GitHub Pages admin for **pbx3-oss**.
 
-Until a published GitHub Pages bundle exists, Lab uses the **Vite dev server** so the browser URL stays on `http://localhost:5173`. Usually, you will run npm in your VSC or Cursor IDE. You can find specific Node.js install instructions for your setup online.
+| You need | You do **not** need |
+|----------|---------------------|
+| A reachable node API (`https://{fqdn}:44300/api`) and/or your fleet catalog HTTPS URL | Your own Pages site or `npm run build` |
+| Org bucket CORS allowing origin `https://app.pbx3.com` (fleet) | Baking a separate SPA per fleet |
+| Node API CORS allowing the same origin (for Bearer login) | Installing **pbx3spa** on the PBX |
 
+**Solo:** open **app.pbx3.com** → enter email, password, and API URL. Leave catalog unset / unused. See [Solo trial](../getting-started/solo-trial.md).
 
-## What you need
+**Fleet:** open **app.pbx3.com** → use the default catalog, or **Switch fleet catalog…** (or `?catalog=`) to your `…/catalog/instance-index.json` → pick an instance → sign in. Details: [Sign in](../getting-started/sign-in.md) · [SPA catalog URL and Pages CORS](../cloud/spa-catalog-cors.md).
 
-| Have it? | Thing |
-|:--------:|-------|
-| ☐ | **Node.js LTS** (includes **npm**) — [nodejs.org](https://nodejs.org/) if `node -v` fails. Vite wants Node **18+** (20 LTS is fine). |
-| ☐ | Git + HTTPS to GitHub (public **pbx3spa**) |
-| ☐ | Home LAN IP (PBX example `192.168.1.31`) and control LAN IP (example `192.168.1.33`) |
+Self-hosting a fork of **pbx3spa** is optional (private branding / air-gap only).
 
-## Clone and env
+---
+
+## Lab LAN path (Vite on your PC)
+
+Lab Garage catalogs are often **private HTTP** on the LAN (`http://192.168.x.x`). The public Pages SPA cannot reach those URLs from the browser. For the [Lab install sequence](install-lab-worksheet.md), run the **Vite dev server** on your PC so proxies keep the browser on `http://localhost:5173`.
+
+**Needs:** Node.js **18+** (20 LTS fine), Git, home LAN IP (example `192.168.1.31`), control LAN IP (example `192.168.1.33`). Home API already up ([Lab home](install-lab-home.md) `/up` → 200).
+
+### Clone and env
 
 ```bash
-git clone --depth 1 https://github.com/aelintra/pbx3spa.git
+git clone --depth 1 https://github.com/pbx3-oss/pbx3spa.git
 cd pbx3spa
 ```
 
-Create **`.env.development`** in that folder (this file is not in git). Edit the two IPs if yours differ:  In our example .31 is the PBX instance you created and .33 is the Gatekeeper/Garage instance.
+Create **`.env.development`** (not in git). Edit IPs if yours differ (`.31` = home PBX, `.33` = Gatekeeper/Garage):
 
 ```env
 VITE_API_PROXY_TARGET=https://192.168.1.31:44300
@@ -37,40 +46,36 @@ VITE_FLEET_GATEKEEPER_PROXY_TARGET=http://192.168.1.33
 VITE_FLEET_GATEKEEPER_URL=/fleet-gk
 ```
 
-That tells Vite:
-
 | Variable | What it does |
 |----------|----------------|
-| `VITE_API_PROXY_TARGET` | Browser `/api` → home `https://…:44300` (TLS not checked by the proxy — Lab snakeoil is OK) |
+| `VITE_API_PROXY_TARGET` | Browser `/api` → home `https://…:44300` (proxy skips TLS verify — Lab snakeoil OK) |
 | `VITE_DEFAULT_API_BASE_URL` | Login form pre-fill: `http://localhost:5173/api` |
-| `VITE_CATALOG_PROXY_TARGET` + `VITE_INSTANCE_DIRECTORY_URL` | Fleet instance picker via Garage catalog on the control host |
-| `VITE_FLEET_GATEKEEPER_*` | **Fleet console** login → Gatekeeper on the control host |
+| `VITE_CATALOG_PROXY_TARGET` + `VITE_INSTANCE_DIRECTORY_URL` | Fleet picker via Garage catalog (no browser CORS to Garage) |
+| `VITE_FLEET_GATEKEEPER_*` | **Fleet console** → Gatekeeper on the control host |
 
-## Run Vite
+### Run Vite
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open **http://localhost:5173** in the browser. Leave that terminal running. Stop with Ctrl+C.
+Open **http://localhost:5173**. Leave the terminal running (Ctrl+C to stop).
 
-Do **not** open `https://192.168.1.31:44300` in the browser (snakeoil). Always use the Vite URL.
+Do **not** open `https://192.168.1.31:44300` in the browser (snakeoil). Always use the Vite URL for Lab.
 
-## Sign in
+### Sign in (Lab)
 
-**Instance admin** (tenants, extensions, Commit): email/password from the [home installer](install-lab-home.md). Leave API base as `http://localhost:5173/api`.
+**Instance admin** (tenants, extensions, Commit): email/password from the [home installer](install-lab-home.md). API base `http://localhost:5173/api`.
 
 **Fleet console** (catalog, Register instance): [control installer](install-lab-control.md) fleet email/password. Then [adopt the home](install-lab-adopt.md).
 
 Modes use different passwords. Do not mix them.
 
-## WebRTC Line test (optional)
+### WebRTC Line test (optional)
 
-After [Lab SBC §4 WSS](install-lab-sbc.md#4-webrtc--wss-on-the-lab-sbc-required-for-spa-line-test) and a **WebRTC** extension on the home: Extensions → detail → **Line test**. Override WSS to `wss://192.168.1.85:8089/ws` (trust the lab self-signed cert first). SIP domain = tenant FQDN; user = **shortuid**.
+After [Lab SBC §4 WSS](install-lab-sbc.md#4-webrtc--wss-on-the-lab-sbc-required-for-spa-line-test) and a **WebRTC** extension: Extensions → detail → **Line test**. Override WSS to `wss://192.168.1.85:8089/ws` (trust the lab self-signed cert first). SIP domain = tenant FQDN; user = **shortuid**.
 
-That's it for this section.  You're almost there...
-
-## Next
+## Next (Lab sequence)
 
 [Adopt a Lab home into Fleet](install-lab-adopt.md).

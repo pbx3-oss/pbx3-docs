@@ -36,7 +36,7 @@ This is **not** [SBC backup and restore](sbc-backup-restore.md) (cold DR) and **
 ```bash
 sudo apt-get update && sudo apt-get install -y git curl
 cd ~
-git clone https://github.com/aelintra/pbx3sbc.git
+git clone https://github.com/pbx3-oss/pbx3sbc.git
 cd pbx3sbc
 sudo ./install.sh --advertised-ip <PUBLIC_EIP_OR_VIP> --db-password '<DB_PASSWORD>'
 ```
@@ -53,7 +53,7 @@ Check: `systemctl is-active opensips mariadb` → both `active`.
 
 ```bash
 cd ~
-git clone https://github.com/aelintra/pbx3sbc-admin.git
+git clone https://github.com/pbx3-oss/pbx3sbc-admin.git
 cd pbx3sbc-admin
 
 sudo ./install.sh \

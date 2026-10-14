@@ -78,7 +78,7 @@ For **greenfield only** (no restore), see [Install SBC edge](install-sbc.md).
 - Host: **x86_64** Ubuntu 24.04 (LAN VM, spare AMD box, or `t3.*` EC2 — **not** `t4g` unless you build OpenSIPS yourself)
 - SSH with sudo
 - From your laptop: AWS creds that can read `s3://08jzwn-pbx3/sbc/sbc/backups/` (or scp a zip you already fetched)
-- GitHub access to clone `pbx3sbc` and `pbx3sbc-admin`
+- Network access to clone public **`pbx3-oss/pbx3sbc`** and **`pbx3sbc-admin`** (HTTPS; no GitHub login required)
 
 ### 1. Confirm a backup exists
 
@@ -100,7 +100,7 @@ On the scratch host:
 
 ```bash
 cd ~
-git clone https://github.com/aelintra/pbx3sbc.git
+git clone https://github.com/pbx3-oss/pbx3sbc.git
 cd pbx3sbc
 sudo ./install.sh --advertised-ip <SCRATCH_IP> --preferlan --db-password '<TEMP_DB_PASS>'
 ```
@@ -113,7 +113,7 @@ Check: `systemctl is-active opensips mariadb` → both `active`.
 
 ```bash
 cd ~
-git clone https://github.com/aelintra/pbx3sbc-admin.git
+git clone https://github.com/pbx3-oss/pbx3sbc-admin.git
 cd pbx3sbc-admin
 sudo ./install.sh \
   --db-host localhost \

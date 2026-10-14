@@ -7,7 +7,7 @@ Print this page or copy the tables into your own spreadsheet **before** you star
 !!! warning "Private — do not commit filled copies"
     This worksheet holds passwords and fleet tokens. Keep filled copies on your machine or password manager only. **Do not** commit them to git, tickets, or shared docs.
 
-**Install sequence:** [Control](install-lab-control.md) → [SBC](install-lab-sbc.md) → [Home](install-lab-home.md) → [SPA on your PC](install-lab-spa.md) → [Adopt + Provision edge](install-lab-adopt.md).
+**Install sequence:** [Control](install-lab-control.md) → [SBC](install-lab-sbc.md) → [Home](install-lab-home.md) → [Admin SPA (Lab Vite)](install-lab-spa.md) → [Adopt + Provision edge](install-lab-adopt.md). Cloud fleets use **https://app.pbx3.com** instead of Vite.
 
 ---
 

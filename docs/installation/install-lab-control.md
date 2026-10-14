@@ -35,7 +35,7 @@ Paste this (creates `~/pbx3/pbx3-directory` and runs the installer):
 sudo apt-get update && sudo apt upgrade
 sudo apt-get install -y git
 cd ~
-git clone --depth 1 https://github.com/aelintra/pbx3.git
+git clone --depth 1 https://github.com/pbx3-oss/pbx3.git
 cd pbx3/pbx3-directory
 sudo ./tools/install-control-host.sh
 ```
