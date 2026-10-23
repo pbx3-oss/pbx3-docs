@@ -13,11 +13,31 @@ Keep those separate (do not mix tokens).
 
 ## Instance admin (day-to-day)
 
-### Solo
+### Solo (or any node not in the catalog)
 
-1. Open **https://app.pbx3.com**.
-2. Email + password + API URL (`https://{node}:44300/api`).
-3. No catalog required.
+Use this for a **LAN / localhost** home, a fresh solo install, or any node that is not listed in the fleet catalog.
+
+1. Open **[https://app.pbx3.com](https://app.pbx3.com)**.
+2. On the chooser, click **Manage instance** (not Fleet console).
+3. On the catalog picker, click **Enter API URL manually** (bottom of the list).
+4. **API base URL:** `https://{host-or-ip}:44300/api`  
+   Examples: `https://192.168.1.148:44300/api`, `https://5ks5v4.pbx3.com:44300/api`.
+5. Email + password for that node’s Sanctum admin.
+
+No catalog, Gatekeeper, or SBC is required.
+
+#### First visit with a lab snakeoil certificate
+
+Until the node has a **trusted** Let’s Encrypt (or custom) cert, the browser blocks `fetch` from **app.pbx3.com** to the node even when `curl -k` works. Trust the cert **once in the same browser**:
+
+1. Open `https://{host-or-ip}:44300/up` in a new tab (same browser profile as the SPA).
+2. Accept the certificate warning (Advanced → proceed / continue to site).
+3. Confirm the page returns OK / HTTP success.
+4. Return to **app.pbx3.com** and sign in again with the same API base URL.
+
+That exception is per browser (and usually per hostname/IP). After [First Let's Encrypt](../tls/first-letsencrypt.md) on a public FQDN, this step is unnecessary.
+
+**Prefer Pages over Vite for multi-node lab.** [Vite](../installation/install-lab-spa.md) proxies `/api` to a **single** `VITE_API_PROXY_TARGET` — awkward when you hop between several PBXes during testing (restart + env change per node). **app.pbx3.com** + manual API URL (and one snakeoil trust per host) switches targets without that. Use Vite when you are **editing the SPA** itself.
 
 ### Fleet catalog picker
 

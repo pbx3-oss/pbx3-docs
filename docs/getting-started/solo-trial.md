@@ -15,22 +15,33 @@ Run **one** PBX3 instance without fleet catalog, org S3, Gatekeeper, or SBC.
 
 ## Sign in
 
-1. Open **[https://app.pbx3.com](https://app.pbx3.com)** (Lab LAN snakeoil: use [Vite](../installation/install-lab-spa.md) instead).
-2. Enter **email** and **password** (instance admin).
-3. Enter **API base URL**, e.g. `https://YOURNODE.pbx3.com:44300/api`.
-4. Do **not** point at a fleet catalog (picker unused / solo path).
+Full chooser steps (including **LAN IP + snakeoil**): **[Sign in → Solo](sign-in.md#solo-or-any-node-not-in-the-catalog)**.
+
+Short path:
+
+1. Open **[https://app.pbx3.com](https://app.pbx3.com)**.
+2. **Manage instance** → **Enter API URL manually**.
+3. **API base URL** e.g. `https://YOURNODE.pbx3.com:44300/api` or `https://192.168.x.x:44300/api`.
+4. Instance admin **email** + **password**.
+
+If the SPA says it cannot reach the API but `curl -k https://HOST:44300/up` works from your laptop, open that `/up` URL in the browser once and accept the certificate warning, then retry. Details on the [Sign in](sign-in.md#first-visit-with-a-lab-snakeoil-certificate) page.
 
 ## Lab tip
 
-Golden example API:
+Golden (cloud, trusted LE) example API:
 
 `https://08jzwn.pbx3.com:44300/api`
 
-Verify TLS without the SPA proxy:
-
 ```bash
 curl -sS -o /dev/null -w '%{http_code}\n' https://08jzwn.pbx3.com:44300/up
-# expect 200 (no -k)
+# expect 200 (no -k) when LE is live
+```
+
+LAN lab before LE:
+
+```bash
+curl -k -sS -o /dev/null -w '%{http_code}\n' https://192.168.1.148:44300/up
+# expect 200; then trust the same URL in the browser for app.pbx3.com
 ```
 
 When you outgrow solo, see [Fleet overview](../fleet/overview.md) and [Commission a fleet instance](../fleet/commission-instance.md) / [Onboard](../fleet/onboard-instance.md).
