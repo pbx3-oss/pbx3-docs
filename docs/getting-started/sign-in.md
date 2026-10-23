@@ -37,7 +37,7 @@ Until the node has a **trusted** Let’s Encrypt (or custom) cert, the browser b
 
 That exception is per browser (and usually per hostname/IP). After [First Let's Encrypt](../tls/first-letsencrypt.md) on a public FQDN, this step is unnecessary.
 
-**Lab alternative:** [Vite on your PC](../installation/install-lab-spa.md) proxies `/api` and ignores upstream TLS — useful while developing the SPA, not required for day-to-day solo admin.
+**Prefer Pages over Vite for multi-node lab.** [Vite](../installation/install-lab-spa.md) proxies `/api` to a **single** `VITE_API_PROXY_TARGET` — awkward when you hop between several PBXes during testing (restart + env change per node). **app.pbx3.com** + manual API URL (and one snakeoil trust per host) switches targets without that. Use Vite when you are **editing the SPA** itself.
 
 ### Fleet catalog picker
 

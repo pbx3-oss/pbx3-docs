@@ -24,6 +24,8 @@ Self-hosting a fork of **pbx3spa** is optional (private branding / air-gap only)
 
 Lab Garage catalogs are often **private HTTP** on the LAN (`http://192.168.x.x`). The public Pages SPA cannot reach those URLs from the browser. For the [Lab install sequence](install-lab-worksheet.md), run the **Vite dev server** on your PC so proxies keep the browser on `http://localhost:5173`.
 
+**Multi-PBX testing:** `VITE_API_PROXY_TARGET` is **one** upstream at a time — changing nodes means editing `.env.development` and restarting Vite. Prefer **[app.pbx3.com](https://app.pbx3.com)** with [Manage instance → manual API URL](../getting-started/sign-in.md#solo-or-any-node-not-in-the-catalog) (trust each snakeoil `/up` once) when you hop between several homes. Use Vite when you need Garage catalog proxying or are **editing the SPA**.
+
 **Needs:** Node.js **18+** (20 LTS fine), Git, home LAN IP (example `192.168.1.31`), control LAN IP (example `192.168.1.33`). Home API already up ([Lab home](install-lab-home.md) `/up` → 200).
 
 ### Clone and env
