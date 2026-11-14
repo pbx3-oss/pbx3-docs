@@ -34,6 +34,8 @@ Rules of thumb:
 2. Tenant move / rehome: M3 fleet phones with `provision.{apex}` need no RPS edit. M1 phones follow whatever the reseller platform already does — PBX3 MAC map does not apply.
 3. SPA **Last provisioned** / **Reset Once** only matter for MACs that fetch from us.
 
+Security tradeoffs when PBX3 *does* own the HTTP stream: [Provisioning security (discussion)](phone-provisioning-security.md).
+
 ## What we deliberately do not build
 
 - A product that replaces vendor/reseller **redirect / discovery**.

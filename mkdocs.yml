@@ -79,6 +79,7 @@ nav:
       - Reseller full-config (M1): admin/phone-provisioning-m1.md
       - Provision streams (System + Customer): admin/phone-provisioning-streams.md
       - Restrict provision HTTPS (edge): admin/phone-provisioning-access.md
+      - Provisioning security (discussion): admin/phone-provisioning-security.md
       - Trunks and outbound routes: admin/trunks-routes.md
       - Inbound routes (DDI): admin/inbound-routes.md
       - Day timers and route profiles: admin/day-timers-and-profiles.md
