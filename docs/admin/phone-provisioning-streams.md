@@ -42,4 +42,5 @@ Prefer **`$…` symbolics** gated by extension **sndcreds** (Once / Always / No)
 
 - [Desk phone RPS enrollment](phone-provisioning-rps.md)
 - [Reseller full-config (M1)](phone-provisioning-m1.md) — when PBX3 does not own the HTTP stream at all
+- [Provisioning security (discussion)](phone-provisioning-security.md)
 - [Extensions](extensions.md)
