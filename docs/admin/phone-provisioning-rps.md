@@ -2,6 +2,8 @@
 
 Point vendor **Redirect / Provisioning Server (RPS)** at PBX3 so the handset downloads its config over HTTPS. SIP registration is separate (tenant FQDN via the SBC).
 
+Security tradeoffs (solo vs fleet, vendor CAs): [Provisioning security (discussion)](phone-provisioning-security.md).
+
 ## Prerequisites
 
 - Extension exists with a **MAC**, provision stream, and credentials.

@@ -40,3 +40,4 @@ sudo ufw allow 41363/tcp
 
 - [Desk phone RPS enrollment](phone-provisioning-rps.md)
 - [Provision streams](phone-provisioning-streams.md)
+- [Provisioning security (discussion)](phone-provisioning-security.md)

@@ -44,4 +44,6 @@ curl -k -sS -o /dev/null -w '%{http_code}\n' https://192.168.1.148:44300/up
 # expect 200; then trust the same URL in the browser for app.pbx3.com
 ```
 
+Desk provisioning on solo stays LAN-assist (no forced mTLS); vendor CA sourcing is on you — [Provisioning security](../admin/phone-provisioning-security.md).
+
 When you outgrow solo, see [Fleet overview](../fleet/overview.md) and [Commission a fleet instance](../fleet/commission-instance.md) / [Onboard](../fleet/onboard-instance.md).
