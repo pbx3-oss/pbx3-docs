@@ -12,7 +12,7 @@ When you finish this page you will have:
 That is the whole solo story. Fleet comes later, if you need it.
 
 !!! note "Packagecloud"
-    Debs ship from Packagecloud repo **`aelintra/pbx3`** (same pattern as SARK 6.5). The repo is the intended public path; create/publish it before treating the `curl | bash` step as live.
+    Debs ship from Packagecloud repo **`aelintra/pbx3`**. The repo is the intended public path; create/publish it before treating the `curl | bash` step as live.
 
 ## Before you begin
 
