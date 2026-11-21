@@ -1,5 +1,8 @@
 # Install pbx3 and pbx3api
 
+!!! tip "Solo Packagecloud path"
+    New solo box from Packagecloud debs: prefer **[Solo install](install-solo.md)**. This page is the longer git / `install-home-host.sh` path (and the first half of fleet commission).
+
 !!! tip "AI-assisted path"
     Prefer an agent to drive this page: [AI-assisted install](ai-assisted-install.md) (solo kickoff). You still approve DNS / VM / LE gates.
 
@@ -9,7 +12,7 @@ This is the **same stack** as the [Lab home](install-lab-home.md) install (`inst
 
 | After this page | Continue at |
 |-----------------|-------------|
-| Stay solo | [Solo trial](../getting-started/solo-trial.md) |
+| Stay solo | [Solo install](install-solo.md) · [Solo trial](../getting-started/solo-trial.md) |
 | **New fleet home** (you just finished Install) | [Commission a fleet instance](../fleet/commission-instance.md) → **Step 1 Adopt** |
 | Node already up; adopt only | [Onboard](../fleet/onboard-instance.md) |
 | LAN lab (no DNS / LE) | [Install the Lab home PBX](install-lab-home.md) |
@@ -313,7 +316,7 @@ Lab ARM guests compile from source — see [Lab home → CAGI](install-lab-home.
 
 | Goal | Go to |
 |------|--------|
-| Stay solo | [Solo trial](../getting-started/solo-trial.md) · [Admin guide](../admin/home-dashboard.md) |
+| Stay solo | [Solo install](install-solo.md) · [Solo trial](../getting-started/solo-trial.md) · [Admin guide](../admin/home-dashboard.md) |
 | New fleet home (after Install) | [Commission](../fleet/commission-instance.md) |
 | Adopt only | [Onboard](../fleet/onboard-instance.md) or Commission Step 1 |
 | Same KSUID after EC2 loss | [Rebuild from S3](../fleet/rebuild-from-s3.md) |

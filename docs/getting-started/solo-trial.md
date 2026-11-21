@@ -2,7 +2,7 @@
 
 Run **one** PBX3 instance without fleet catalog, org S3, Gatekeeper, or SBC.
 
-**Install the stack first:** [Install pbx3 and pbx3api](../installation/install-pbx3-pbx3api.md) (`install-home-host.sh` → DNS → LE). This page is sign-in and solo scope only.
+**Install first:** follow the linear **[Solo install](../installation/install-solo.md)** (Packagecloud `pbx3` → first-run → GitHub `pbx3api` → DNS/LE → SPA).
 
 ## What you need
 
@@ -15,35 +15,10 @@ Run **one** PBX3 instance without fleet catalog, org S3, Gatekeeper, or SBC.
 
 ## Sign in
 
-Full chooser steps (including **LAN IP + snakeoil**): **[Sign in → Solo](sign-in.md#solo-or-any-node-not-in-the-catalog)**.
+After [Solo install](../installation/install-solo.md), open **[app.pbx3.com](https://app.pbx3.com)** → **Manage instance** → **Enter API URL manually** → `https://YOURNODE:44300/api` → admin email/password.
 
-Short path:
+Full chooser detail (including LAN IP + snakeoil): **[Sign in → Solo](sign-in.md#solo-or-any-node-not-in-the-catalog)**.
 
-1. Open **[https://app.pbx3.com](https://app.pbx3.com)**.
-2. **Manage instance** → **Enter API URL manually**.
-3. **API base URL** e.g. `https://YOURNODE.pbx3.com:44300/api` or `https://192.168.x.x:44300/api`.
-4. Instance admin **email** + **password**.
+Desk provisioning on solo stays LAN-assist (no forced mTLS) — [Provisioning security](../admin/phone-provisioning-security.md).
 
-If the SPA says it cannot reach the API but `curl -k https://HOST:44300/up` works from your laptop, open that `/up` URL in the browser once and accept the certificate warning, then retry. Details on the [Sign in](sign-in.md#first-visit-with-a-lab-snakeoil-certificate) page.
-
-## Lab tip
-
-Golden (cloud, trusted LE) example API:
-
-`https://08jzwn.pbx3.com:44300/api`
-
-```bash
-curl -sS -o /dev/null -w '%{http_code}\n' https://08jzwn.pbx3.com:44300/up
-# expect 200 (no -k) when LE is live
-```
-
-LAN lab before LE:
-
-```bash
-curl -k -sS -o /dev/null -w '%{http_code}\n' https://192.168.1.148:44300/up
-# expect 200; then trust the same URL in the browser for app.pbx3.com
-```
-
-Desk provisioning on solo stays LAN-assist (no forced mTLS); vendor CA sourcing is on you — [Provisioning security](../admin/phone-provisioning-security.md).
-
-When you outgrow solo, see [Fleet overview](../fleet/overview.md) and [Commission a fleet instance](../fleet/commission-instance.md) / [Onboard](../fleet/onboard-instance.md).
+When you outgrow solo, see [Fleet overview](../fleet/overview.md) and [Commission a fleet instance](../fleet/commission-instance.md).

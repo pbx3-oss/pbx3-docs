@@ -36,7 +36,7 @@ Skip fleet service token on this page (solo / commission later).
 Done when: https://{instance-fqdn}:44300/up returns 200 without -k, and I can sign in per getting-started/sign-in.md.
 ```
 
-After install: [Solo trial](../getting-started/solo-trial.md). Fleet later: [Commission](../fleet/commission-instance.md).
+After install: [Solo install](install-solo.md) · [Solo trial](../getting-started/solo-trial.md). Fleet later: [Commission](../fleet/commission-instance.md).
 
 ---
 
