@@ -55,6 +55,7 @@ nav:
       - Sign in to the admin UI: getting-started/sign-in.md
   - Installation:
       - Requirements: installation/requirements.md
+      - Solo install: installation/install-solo.md
       - AI-assisted install: installation/ai-assisted-install.md
       - Install pbx3 and pbx3api: installation/install-pbx3-pbx3api.md
       - Lab install worksheet: installation/install-lab-worksheet.md

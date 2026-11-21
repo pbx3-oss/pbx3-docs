@@ -323,7 +323,7 @@ You can start solo and grow into a fleet; the node software is the same.
 
 | You want to… | Read |
 |--------------|------|
-| Try a single node | [Solo trial](solo-trial.md) |
+| Try a single node | [Solo install](../installation/install-solo.md) · [Solo trial](solo-trial.md) |
 | Fleet ops at a glance | [Fleet overview](../fleet/overview.md) |
 | Move a tenant | [Tenant move](../fleet/tenant-move.md) |
 | Onboard another instance | [Onboard a second instance](../fleet/onboard-instance.md) |
